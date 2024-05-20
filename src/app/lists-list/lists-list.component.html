@@ -1,0 +1,5 @@
+<div class="ui midddle aligned selection divided list">
+  @for (list of lists; track list.name){
+    <a class="item en-list-list-item" [list]="list" [routerLink]="['/lists', list.id]"></a>
+  }
+</div>

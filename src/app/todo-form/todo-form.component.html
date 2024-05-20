@@ -1,0 +1,54 @@
+<h1>Todoformular</h1>
+<form class="ui large form" [formGroup]="todoForm" (ngSubmit)="submitForm()">
+  <input type="hidden" formControlName="id">
+  <div class="field">
+    <label>Todo Name</label>
+    <input formControlName="title">
+    @if(errors['title']){
+      <div class="ui negative message">{{errors['title']}}</div>
+    }
+  </div>
+  <div class="field">
+    <label>Beschreibung</label>
+    <textarea formControlName="description" rows="3"></textarea>
+  </div>
+
+  <div class="field">
+    <label>Bilder</label>
+    <div formArrayName="images">
+      @for(control of images.controls;let i=$index,l=$last;track control){
+        <div class="fields" [formGroupName]="i">
+          <input type="hidden" formControlName="id">
+          <div class="nine wide field">
+            <input formControlName="url" placeholder="http://bild{{i+1}}_url">
+          </div>
+          <div class="six wide field">
+            <input formControlName="title"placeholder="Bild{{i+1}}_Titel">
+          </div>
+          @if(l){
+            <div class="one wide field">
+              <button (click)="addThumbnailControl()" class="ui large button" type="button">+</button>
+            </div>
+          }
+        </div>
+      }
+    </div>
+    @if(errors['images']){
+      <div class="ui negative message">{{errors['images']}}</div>
+    }
+  </div>
+
+  <div class="container">
+  <button type="submit" class="ui green button"
+          [disabled]="todoForm.invalid">Speichern</button>
+    <button [routerLink]="'/todos'" class="ui black button">Zurück zur Liste</button>
+
+  </div>
+
+
+</form>
+
+
+
+
+

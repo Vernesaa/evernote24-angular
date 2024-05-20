@@ -1,0 +1,16 @@
+@if(list && list.notes){
+  <div class="content">
+    <div class="header">
+      {{list.name}}
+    </div>
+
+    <div class="metadata">
+      @for (notes of list.notes; track notes; let l =$last){
+        <span>{{notes.title}}
+          @if(!l){<span>,</span>}
+              </span>
+      }
+    </div>
+
+  </div>
+}

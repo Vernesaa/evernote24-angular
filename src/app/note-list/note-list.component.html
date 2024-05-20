@@ -1,0 +1,6 @@
+<div class="ui midddle aligned selection divided list">
+  @for (note of notes; track note.title){
+    <a class="item en-note-list-item" [note]="note" [routerLink]="['/notes', note.id]"></a>
+  }
+</div>
+

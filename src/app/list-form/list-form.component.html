@@ -1,0 +1,26 @@
+<h1>Listen Formular</h1>
+<form class="ui large form" [formGroup]="listForm" (ngSubmit)="submitForm()">
+  <input type="hidden" formControlName="id">
+  <div class="field">
+    <label>Listen Name</label>
+    <input formControlName="name">
+    @if(errors['name']){
+      <div class="ui negative message">{{errors['name']}}</div>
+    }
+  </div>
+  <div class="container">
+
+  <button type="submit" class="ui green button"
+          [disabled]="listForm.invalid">Speichern</button>
+
+      <button [routerLink]="'/lists'" class="ui black button">Zurück zur Liste</button>
+  </div>
+
+
+
+</form>
+
+
+
+
+

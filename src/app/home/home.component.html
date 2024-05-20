@@ -1,0 +1,14 @@
+<div class="ui container">
+  <h1>Home</h1>
+  <p>Willkommen bei Evernote</p>
+  <a routerLink="../lists" class="ui secondary button">Listen ansehen</a>
+
+
+
+  <h3>Nach Notizen suchen </h3>
+    <en-search (noteSelected)="noteSelected($event)"
+    class="column"></en-search>
+
+</div>
+
+

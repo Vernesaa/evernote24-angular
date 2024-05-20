@@ -1,0 +1,29 @@
+@if(list){
+  <div class="content">
+    <div class="header">{{list.name}}</div>
+
+    <div class="metadata">
+      @for (notes of list.notes; track notes; let l =$last){
+        <span>{{notes.title}}, {{notes.description}}
+          @if(!l){<span>,</span>}
+              </span>
+      }
+
+
+    </div>
+
+    <button [routerLink]="'/lists'" class="ui black button">Zurück zur Listenansicht</button>
+    @if(authService.isLoggedIn()){
+    <button class="ui tiny redlabeled icon button" (click)="removeList()">
+    <i class="remove icon"></i>Liste löschen</button>
+
+    <a class="ui tiny violet labeled icon button"
+       [routerLink]="['../../admin/lists-form', list.id]">
+      <i class="write icon"></i> Liste bearbeiten</a>
+    }
+  </div>
+
+
+}
+
+

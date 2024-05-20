@@ -1,0 +1,5 @@
+<div class="ui midddle aligned selection divided list">
+  @for (todo of todos; track todo.title){
+    <a class="item en-todo-list-item" [todo]="todo"  [routerLink]="['/todos', todo.id]"></a>
+  }
+</div>

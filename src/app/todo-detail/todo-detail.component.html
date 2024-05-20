@@ -1,0 +1,39 @@
+@if(todo){
+  <div class="ui grid">
+    <div class="four wide column">
+      @if(todo.images && todo.images[0]){
+        <img class="ui large image" [src]="todo.images[0].url">
+      }
+    </div>
+
+    <div class="twelve wide column">
+      <h1 class="ui header">{{todo.title}}</h1>
+      <div class="ui divider"></div>
+
+      <div class="sixteen wide column">
+        <h3 class="uiheader">Beschreibung</h3>
+        {{todo.description}}
+      </div>
+
+
+
+      <button [routerLink]="'/todos'" class="ui black button">Zurück zur Todoansicht</button>
+
+      @if(authService.isLoggedIn()){
+      <button class="ui tiny red labeled icon button"
+              (click)="removeTodo()">
+        <i class="remove icon"></i>Todo löschen</button>
+
+      <a class="ui tiny violet labeled icon button"
+         [routerLink]="['../../admin/todos-form', todo.id]">
+        <i class="write icon"></i> Todo bearbeiten</a>
+      }
+    </div>
+
+
+
+
+
+  </div>
+}
+

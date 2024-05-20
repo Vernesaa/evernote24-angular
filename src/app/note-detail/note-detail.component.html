@@ -1,0 +1,47 @@
+@if(note){
+  <div class="ui grid">
+  <div class="four wide column">
+  @if(note.images && note.images[0]){
+    <img class="ui large image" [src]="note.images[0].url">
+  }
+  </div>
+
+  <div class="twelve wide column">
+  <h1 class="ui header">{{note.title}}</h1>
+  <div class="ui divider">
+  </div>
+
+  <div class="sixteen wide column">
+  <h3 class="uiheader">Beschreibung</h3>{{note.description}}
+  </div>
+
+    <div class="metadata">
+      <h3>Todos</h3>
+      @for (todos of note.todos; track todos; let l =$last){
+        <span>{{todos.title}},
+          @if(!l){<span>,</span>}
+              </span>
+      }
+      </div>
+
+
+
+
+    <button [routerLink]="'/notes'" class="ui black button">Zurück zur Notizansicht</button>
+
+    @if(authService.isLoggedIn()){
+    <button class="ui tiny red labeled icon button"
+    (click)="removeNote()">
+    <i class="remove icon"></i>Notiz löschen</button>
+
+    <a class="ui tiny violet labeled icon button"
+       [routerLink]="['../../admin/note-form', note.id]">
+      <i class="write icon"></i> Notiz bearbeiten</a>
+    }
+  </div>
+
+
+
+  </div>
+}
+

@@ -1,0 +1,17 @@
+<div class="ui search" [ngClass]="{loading:isLoading}">
+<div class="ui icon input">
+<input (keyup)="keyup.emit(searchTerm.value)" #searchTerm class="prompt" type="text" placeholder="Suche...">
+<i class="search icon"></i>
+</div>
+<div class="resultstransition" [ngClass]="{visible:foundNotes.length}">
+
+@for(note of foundNotes; track note){
+  <a href (click)="noteSelected.emit(note); false" class="result">
+  <div class="content">
+  <div class="title">{{note.title}}</div>
+  </div>
+  </a>
+}
+</div>
+
+</div>
